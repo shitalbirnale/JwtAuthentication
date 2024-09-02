@@ -23,7 +23,7 @@ namespace JwtAuthentication
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            //Swagger Authorize
+            //Swagger Authorize button
             builder.Services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "JwtAuthentication", Version = "v1" });
@@ -88,6 +88,7 @@ namespace JwtAuthentication
             });
             //Register Services
             builder.Services.AddScoped<IEmployee, EmployeeService>();
+            builder.Services.AddScoped<IAuth,AuthService>();
 
             var app = builder.Build();
 

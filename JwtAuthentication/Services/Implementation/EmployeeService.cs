@@ -4,13 +4,22 @@ using JwtAuthentication.Services.Interface;
 
 namespace JwtAuthentication.Services.Implementation
 {
+    /// <summary>
+    /// EmployeeService
+    /// </summary>
     public class EmployeeService : IEmployee
     {
         private readonly ApplicationContext _appDbContextService;
+
         public EmployeeService(ApplicationContext applicationContext) 
         {
             _appDbContextService = applicationContext;
         }
+        /// <summary>
+        /// GetEmployeeByEmail
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public Task<Employee> GetEmployeeByEmail(string email)
         {
             var employee = new Employee();
@@ -24,6 +33,10 @@ namespace JwtAuthentication.Services.Implementation
             return Task.FromResult(employee);
         }
 
+        /// <summary>
+        /// GetEmployees
+        /// </summary>
+        /// <returns></returns>
         public Task<List<Employee>> GetEmployees()
         {
             var employees = new List<Employee>();

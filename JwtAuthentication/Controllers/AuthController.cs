@@ -15,30 +15,25 @@ namespace JwtAuthentication.Controllers
     [Route("api/v{version:apiVersion}/[Controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly IEmployee _employeeService;
-        private readonly JwtOptions _jwtOptions;
-        public AuthController(IEmployee employee,IOptions<JwtOptions> jwtOptions)
+        private readonly IAuth _authService;
+
+        public AuthController(IAuth authService)
         {
-            _employeeService = employee;
-            _jwtOptions = jwtOptions.Value;
+            _authService = authService;
         }
+
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <param name="userDetails"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO userDetails)
         {
             try
             {
-                var employee = await _employeeService.GetEmployeeByEmail(userDetails.Email);
-                if (employee is null || (employee != null && employee.Password != userDetails.Password))
-                {
-                    return BadRequest(new { error = "Email/Password is not correct" });
-                }
-                var jwtKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtOptions.Key));
-                var credential = new SigningCredentials(jwtKey, SecurityAlgorithms.HmacSha256);
-                List<Claim> claims = new List<Claim>() { new Claim("Email", userDetails.Email) };
-                var securityToken = new JwtSecurityToken(_jwtOptions.Key, _jwtOptions.Issuer, claims, expires: DateTime.Now.AddMinutes(5), signingCredentials: credential);
-                var token = new JwtSecurityTokenHandler().WriteToken(securityToken);
-                return Ok("Bearer " + token);
+                return Ok(await _authService.LogIn(userDetails));
             }
             catch (Exception ex) 
             { 
