@@ -17,6 +17,10 @@ namespace JwtAuthentication.Controllers
             _employeeService = employee;
         }
 
+        /// <summary>
+        /// GetEmployees
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("GetEmployees")]
         public async Task<IActionResult> GetEmployees() 
