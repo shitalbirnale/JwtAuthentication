@@ -25,7 +25,7 @@ namespace JwtAuthentication.Services.Implementation
             var employee = new Employee();
             try
             {
-               employee =  _appDbContextService.Employees.Where(x => x.Email == email).FirstOrDefault();
+               employee = _appDbContextService.Employees.Where(x => x.Email == email).FirstOrDefault();
             }
             catch (Exception ex) {
                 
