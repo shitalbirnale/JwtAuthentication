@@ -47,7 +47,7 @@ namespace JwtAuthentication.Services.Implementation
                 var jwtKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_jwtOptions.Key));
                 var credential = new SigningCredentials(jwtKey, SecurityAlgorithms.HmacSha256);
                 List<Claim> claims = new List<Claim>() { new Claim(ClaimConstant.EMAIL, userDetails.Email) };
-                var securityToken = new JwtSecurityToken(_jwtOptions.Key, _jwtOptions.Issuer, claims, expires: DateTime.Now.AddMinutes(5), signingCredentials: credential);
+                var securityToken = new JwtSecurityToken(_jwtOptions.Key, _jwtOptions.Issuer, claims, expires: DateTime.Now.AddHours(1), signingCredentials: credential);
                 var token = new JwtSecurityTokenHandler().WriteToken(securityToken);
                 result = ClaimConstant.BEARER + " " + token;
             }

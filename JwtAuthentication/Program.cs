@@ -63,9 +63,11 @@ namespace JwtAuthentication
                             options.GroupNameFormat = "'v'VVV";
                             options.SubstituteApiVersionInUrl = true;
                     });
+
             //Db Connection
             builder.Services.AddDbContext<ApplicationContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnection")).
+            UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
 
             builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
             var key = builder.Configuration.GetSection("Jwt:Key").Get<string>();
@@ -86,6 +88,7 @@ namespace JwtAuthentication
                     ValidateIssuer = false
                 };
             });
+
             //Register Services
             builder.Services.AddScoped<IEmployee, EmployeeService>();
             builder.Services.AddScoped<IAuth,AuthService>();
