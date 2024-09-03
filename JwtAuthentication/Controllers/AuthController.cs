@@ -10,6 +10,9 @@ using System.Text;
 
 namespace JwtAuthentication.Controllers
 {
+    /// <summary>
+    /// AuthController
+    /// </summary>
     [ApiVersion("1.0")]
     [ApiController]
     [Route("api/v{version:apiVersion}/[Controller]")]
