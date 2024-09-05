@@ -1,7 +1,5 @@
 <h1>JwtAuthentication</h1><br>
 This project was generated with <a href="https://dotnet.microsoft.com/en-us/apps/aspnet">_.Net Core Web API_</a> Version 8.0 <br>
-<hr>
-<br>
 <h2>Code scaffolding</h2><br>
 Used below package references for project <br>
 Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" <br>
