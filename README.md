@@ -8,5 +8,6 @@ Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" <br>
 Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" <br>
 Microsoft.EntityFrameworkCore.Tools" Version="8.0.8" <br>
 <h2>ScreenShot</h2>
-![image](https://github.com/user-attachments/assets/bd183f78-e408-4fca-b52d-436eda189f64)
+![image](https://github.com/user-attachments/assets/c81caf80-32d9-4fdd-93fc-2892b7e93517)
+
 
